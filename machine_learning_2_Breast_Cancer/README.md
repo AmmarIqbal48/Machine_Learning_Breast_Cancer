@@ -1,13 +1,7 @@
 ## Machine_learning_2
 Biomedical robot Cancer Detection (PEPPER ROBOT-APPLICATION)
 
-## TEAM MEMBERS
 
-Ginne Vikas Reddy (5061211)
-
-Yeshwanth Guru krishnakumar (5059111)
-
-Elham mohammadi (5073904)
 
 ## ABSTRACT
 
@@ -24,12 +18,8 @@ Function kernel of the SVM classifier.
 
 ## CLASSIFIERS USED
 
-MLP Classifier <br />
 Linear SVM <br />
 Random Forest <br />
-XG BOOST Classifier <br />
-Naive Baye’s <br />
-MLP Classifier <br />
 Optimized RBF kernel <br />
 
 ## PACKAGE DESCRIPTIION
