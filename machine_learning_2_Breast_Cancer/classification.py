@@ -45,48 +45,7 @@ Y_train = training_set.iloc[:,512].values
 X_test = test_set.iloc[:,0:512].values
 Y_test = test_set.iloc[:,512].values
 
-#################MLP Classifier#################
-#hidden_layer_sizes : This parameter allows us to set the number of layers and the number of nodes we wish to have in the Neural Network Classifier.
-#Each element in the tuple represents the number of nodes at the ith position where i is the index of the tuple. Thus the length of tuple denotes the total number of hidden layers in the network.
-#max_iter: It denotes the number of epochs.
-#activation: The activation function for the hidden layers.
-#solver: This parameter specifies the algorithm for weight optimization across the nodes.
-#random_state: The parameter allows to set a seed for reproducing the same results
-classifier = MLPClassifier(hidden_layer_sizes=(150,100,50), max_iter=300,activation = 'relu',solver='adam',random_state=1)
-classifier.fit(X_train, Y_train)
-y_pred = classifier.predict(X_test)
-cm = confusion_matrix(y_pred, Y_test)
-tn = cm[0][0]
-fp = cm[0][1]
-fn = cm[1][0]
-tp = cm[1][1]
-sens1 = sensitivity(tn,fp,fn,tp)
-spec1 = specificity(tn,fp,fn,tp)
-prec  = precision(tn,fp,fn,tp)
-err_rate = error_rate(tn,fp,fn,tp)
-QI = quality_index(sens1,spec1)
-print("################ Details of MLP Classifier ########################")
-print("Sensitivity -> "+str(sens1))
-print("Specificity -> "+str(spec1))
-print("Precision   -> "+str(prec))
-print("Error Rate  -> "+str(err_rate))
-print("Quality Index-> "+str(QI))
-accuracy = float(cm.diagonal().sum())/len(Y_test)
-print("Accuracy : ",accuracy*100)
-print("\n")
-#
-# Print the confusion matrix using Matplotlib
-#
-fig, ax = plt.subplots(figsize=(7.5, 7.5))
-ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
-for i in range(cm.shape[0]):
-    for j in range(cm.shape[1]):
-        ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center', size='xx-large')
- 
-plt.xlabel('Predictions', fontsize=18)
-plt.ylabel('Actuals', fontsize=18)
-plt.title('Confusion Matrix', fontsize=18)
-plt.show()
+
 #################Optimized SVM with RBF Kernel###############
 #For getting 98% accuracy feed C=1100 and Gamma = 1000
 #         https://scikit-learn.org/0.18/modules/generated/sklearn.svm.NuSVC.html
@@ -175,56 +134,3 @@ accuracy = float(cm.diagonal().sum())/len(Y_test)
 print("Accuracy : ",accuracy*100)
 print("\n")
 
-###################### XG Boost############################
-#       https://xgboost.readthedocs.io/en/stable/python/python_api.html?highlight=train#xgboost.train
-model = XGBClassifier()
-model.fit(X_train, Y_train)
-#make predictions for test data
-y_pred = model.predict(X_test)
-cm = confusion_matrix(Y_test,y_pred)
-tn = cm[0][0]
-fp = cm[0][1]
-fn = cm[1][0]
-tp = cm[1][1]
-sens1 = sensitivity(tn,fp,fn,tp)
-spec1 = specificity(tn,fp,fn,tp)
-prec  = precision(tn,fp,fn,tp)
-err_rate = error_rate(tn,fp,fn,tp)
-QI = quality_index(sens1,spec1)
-#evaluate predictions
-print("################ Details of XG Boost ########################")
-print("Sensitivity -> "+str(sens1))
-print("Specificity -> "+str(spec1))
-print("Precision   -> "+str(prec))
-print("Error Rate  -> "+str(err_rate))
-print("Quality Index-> "+str(QI))
-accuracy = float(cm.diagonal().sum())/len(Y_test)
-print("Accuracy : ",accuracy*100)
-print("\n")
-
-###################### Naive Bayes ########################
-#       https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html
-gnb = GaussianNB()
-#	Fit Gaussian Naive Bayes according to X, y.
-gnb.fit(X_train, Y_train)
-#	 Perform classification on an array of test vectors X.
-y_pred = gnb.predict(X_test)
-cm = confusion_matrix(Y_test,y_pred)
-tn = cm[0][0]
-fp = cm[0][1]
-fn = cm[1][0]
-tp = cm[1][1]
-sens1 = sensitivity(tn,fp,fn,tp)
-spec1 = specificity(tn,fp,fn,tp)
-prec  = precision(tn,fp,fn,tp)
-err_rate = error_rate(tn,fp,fn,tp)
-QI = quality_index(sens1,spec1)
-print("################ Details of Naive Bayes ########################")
-print("Sensitivity -> "+str(sens1))
-print("Specificity -> "+str(spec1))
-print("Precision   -> "+str(prec))
-print("Error Rate  -> "+str(err_rate))
-print("Quality Index-> "+str(QI))
-accuracy = float(cm.diagonal().sum())/len(Y_test)
-print("Accuracy : ",accuracy*100)
-print("\n")
