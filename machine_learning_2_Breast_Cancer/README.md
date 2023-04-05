@@ -25,10 +25,11 @@ Optimized RBF kernel <br />
 ## PACKAGE DESCRIPTIION
 
 ![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/72270080/163555016-e1c9fec3-f24a-4df5-b445-5674f25a1ab6.png)
+![163556813-30a6ec14-c7d8-48d5-8c9e-7bd9075a2197](https://user-images.githubusercontent.com/104999107/229981024-e32b536e-5314-4592-9522-442565b833a8.png)
 
       
                                         
- ![Screenshot 2022-04-15 at 11 51 06 AM (1)](https://user-images.githubusercontent.com/72270080/163556813-30a6ec14-c7d8-48d5-8c9e-7bd9075a2197.png)
+ 
       Once the code input is given for further execution have included the screenshot for reference.
 
  And for the graphical interface output attached the screenshot for reference
